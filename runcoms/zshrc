@@ -51,6 +51,8 @@ export CLOUDSDK_PYTHON=python
 setopt clobber
 unsetopt correct_all
 
+bindkey -e
+
 export LANG=en_US.UTF-8
 
 alias nvvp="env DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Developer/NVIDIA/CUDA-10.2/extras/CUPTI/lib64 /Developer/NVIDIA/CUDA-10.2/libnvvp/nvvp.app/Contents/MacOS/nvvp"
