@@ -47,6 +47,7 @@ export CPATH=$CPATH:/usr/local/Cellar/readline/8.0.0_1/include
 export CLOUDSDK_PYTHON=python
 
 setopt clobber
+unsetopt correct_all
 
 export LANG=en_US.UTF-8
 
