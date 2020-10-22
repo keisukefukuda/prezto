@@ -12,56 +12,22 @@ fi
 
 # Customize to your needs...
 
-if [[ -d $HOME/.pyenv/bin ]]; then
-  export PATH=$HOME/.pyenv/bin:$PATH
-  eval "$(pyenv init -)"
-fi
 
-if [ -f "$HOME/.zshrc.private" ]; then
-    source "$HOME/.zshrc.private"
-fi
 
+# ----------------------------------------------------------
+# PATH configuration
+# ----------------------------------------------------------
 
 export PATH=$HOME/local/bin:$PATH
-
-
-# if which mpienv-init; then
-        # eval "$(mpienv-init)"
-# fi
-
-
-if [[ -d $HOME/.cargo/env ]]; then
-  source $HOME/.cargo/env
-fi
-
-export RUST_SRC_PATH=/Users/keisukefukuda/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
 export PATH="/usr/local/opt/qt/bin:$PATH"
-
-export PFKUBE_DOCKER_ALLOWED_RUNTIME_UID=2106
-export PFKUBE_MNJ_DEFAULT_DOCKER_REGISTRY=harbor.mnj.pfn.io/user-kfukuda  # This is used when --target-cluster=mnj
-export PFKUBE_MNJ_KUBECTL_CONTEXT=mnj  # This is used when --target-cluster=mnj
-export PFKUBE_MN1_DEFAULT_DOCKER_REGISTRY=harbor.mnj.pfn.io/user-kfukuda
-export PFKUBE_MN1_KUBECTL_CONTEXT=mn1
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/Cellar/readline/8.0.0_1/lib
 export CPATH=$CPATH:/usr/local/Cellar/readline/8.0.0_1/include
 
-export CLOUDSDK_PYTHON=python
 
-setopt clobber
-unsetopt correct_all
-
-bindkey -e
-
-export LANG=en_US.UTF-8
-
-alias nvvp="env DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Developer/NVIDIA/CUDA-10.2/extras/CUPTI/lib64 /Developer/NVIDIA/CUDA-10.2/libnvvp/nvvp.app/Contents/MacOS/nvvp"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/keisukefukuda/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/keisukefukuda/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/keisukefukuda/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/keisukefukuda/google-cloud-sdk/completion.zsh.inc'; fi
+# ----------------------------------------------------------
+# Basic zsh configuration
+# ----------------------------------------------------------
 
 if ! which starship 2>/dev/null; then
   if [[ -f $HOME/usr/bin/starship ]]; then
@@ -74,11 +40,57 @@ if which starship 2>/dev/null; then
 fi
 
 
+setopt clobber
+unsetopt correct_all
+
+bindkey -e
+
+export LANG=en_US.UTF-8
+
+
+if [[ -f "$HOME/.zshrc.private" ]]; then
+    source "$HOME/.zshrc.private"
+fi
+
+# ----------------------------------------------------------
+# Python configuration
+# ----------------------------------------------------------
+
+export CLOUDSDK_PYTHON=python
+
+if [[ -d $HOME/.pyenv/bin ]]; then
+  export PATH=$HOME/.pyenv/bin:$PATH
+  eval "$(pyenv init -)"
+fi
+
 # Tcl-tk for python (installed from pyenv)
 export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/tcl-tk/lib"
 export CPPFLAGS="-I/usr/local/opt/tcl-tk/include"
 export PKG_CONFIG_PATH="/usr/local/opt/tcl-tk/lib/pkgconfig"
 export PYTHON_CONFIGURE_OPTS="--with-tcltk-includes='-I/usr/local/opt/tcl-tk/include' --with-tcltk-libs='-L/usr/local/opt/tcl-tk/lib -ltcl8.6 -ltk8.6'"
+
+
+# ----------------------------------------------------------
+# Other configuration
+# ----------------------------------------------------------
+
+
+export RUST_SRC_PATH=/Users/keisukefukuda/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+if [[ -d $HOME/.cargo/env ]]; then
+  source $HOME/.cargo/env
+fi
+
+# if which mpienv-init; then
+        # eval "$(mpienv-init)"
+# fi
+
+alias nvvp="env DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/Developer/NVIDIA/CUDA-10.2/extras/CUPTI/lib64 /Developer/NVIDIA/CUDA-10.2/libnvvp/nvvp.app/Contents/MacOS/nvvp"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/keisukefukuda/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/keisukefukuda/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/keisukefukuda/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/keisukefukuda/google-cloud-sdk/completion.zsh.inc'; fi
 
 
