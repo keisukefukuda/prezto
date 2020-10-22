@@ -28,6 +28,10 @@ export CPATH=$CPATH:/usr/local/Cellar/readline/8.0.0_1/include
 # ----------------------------------------------------------
 # Basic zsh configuration
 # ----------------------------------------------------------
+#
+export HISTFILE=${HOME}/.zsh_history
+export HISTSIZE=100000
+export SAVEHIST=1000000
 
 if ! which starship 2>/dev/null; then
   if [[ -f $HOME/usr/bin/starship ]]; then
@@ -46,7 +50,6 @@ unsetopt correct_all
 bindkey -e
 
 export LANG=en_US.UTF-8
-
 
 if [[ -f "$HOME/.zshrc.private" ]]; then
     source "$HOME/.zshrc.private"
