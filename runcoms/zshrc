@@ -43,8 +43,8 @@ if which starship 2>/dev/null; then
         eval "$(starship init zsh)"
 fi
 
-
 setopt clobber
+setopt inc_append_history
 unsetopt correct_all
 setopt interactivecomments
 
@@ -55,6 +55,14 @@ export LANG=en_US.UTF-8
 if [[ -f "$HOME/.zshrc.private" ]]; then
     source "$HOME/.zshrc.private"
 fi
+
+# ----------------------------------------------------------
+# shell functions
+# ----------------------------------------------------------
+
+function history-all() {
+    history -E 1
+}
 
 # ----------------------------------------------------------
 # Python configuration
