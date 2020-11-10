@@ -46,6 +46,7 @@ fi
 
 setopt clobber
 unsetopt correct_all
+setopt interactivecomments
 
 bindkey -e
 
