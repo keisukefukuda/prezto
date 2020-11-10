@@ -46,6 +46,7 @@ fi
 setopt clobber
 setopt inc_append_history
 unsetopt correct_all
+setopt interactivecomments
 
 bindkey -e
 
