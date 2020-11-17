@@ -29,9 +29,11 @@ export CPATH=$CPATH:/usr/local/Cellar/readline/8.0.0_1/include
 # Basic zsh configuration
 # ----------------------------------------------------------
 #
-export HISTFILE=${HOME}/.zsh_history
-export HISTSIZE=100000
-export SAVEHIST=1000000
+if [[ -z "${HISTFILE:-}" ]]; then
+	export HISTFILE=${HOME}/.zsh_history
+	export HISTSIZE=100000
+	export SAVEHIST=1000000
+fi
 
 if ! which starship 2>/dev/null; then
   if [[ -f $HOME/usr/bin/starship ]]; then
